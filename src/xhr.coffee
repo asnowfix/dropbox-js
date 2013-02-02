@@ -356,6 +356,8 @@ class Dropbox.Xhr
       #       have any handler
       @xhr.onprogress = ->
     else
+      @xhr.onerror = => @onXdrError()
+      @xhr.ontimeout = => @onXdrError()
       @xhr.onreadystatechange = => @onReadyStateChange()
     @xhr.open @method, @url, true
 
